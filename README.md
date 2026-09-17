@@ -22,6 +22,32 @@ game assets. All artwork is original.
 - Defensive virtual-keyboard suppression (no on-screen keyboard unless requested)
 - Componentized QML architecture
 
+## Preview
+
+![Deviancy idle screen](preview.png)
+
+### Screenshots
+
+| Idle | Typing |
+|:---:|:---:|
+| ![Idle](Previews/01-idle.png) | ![Typing](Previews/02-typing.png) |
+
+| Authentication success | Authentication failure |
+|:---:|:---:|
+| ![Success](Previews/03-auth-success.png) | ![Failure](Previews/04-auth-fail.png) |
+
+### Video clips
+
+Each state is available as both MP4 and animated GIF in `Previews/clips/`.
+
+| State | GIF |
+|:---|:---:|
+| Idle (scanlines roaming) | ![Idle](Previews/clips/1-idle.gif) |
+| Typing (password cells) | ![Typing](Previews/clips/2-typing.gif) |
+| Access denied | ![Access denied](Previews/clips/3-access-denied.gif) |
+| Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) |
+| Successful authentication | ![Success](Previews/clips/5-successful-auth.gif) |
+
 ## Requirements
 
 - SDDM >= 0.19 (Theme-API 2.0)
@@ -74,6 +100,13 @@ deviancy/
 │   ├── UserCarousel.qml   Prev/current/next user display
 │   ├── PasswordField.qml  Cell-based password entry
 │   └── AuthenticateButton.qml  Collapsing/progress-fill button
+│
+├── Previews/
+│   ├── 01-idle.png
+│   ├── 02-typing.png
+│   ├── 03-auth-success.png
+│   ├── 04-auth-fail.png
+│   └── clips/             MP4 + GIF clips of each auth state
 │
 └── fonts/                (reserved for bundled fonts)
 ```
