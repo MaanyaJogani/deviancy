@@ -1,0 +1,18 @@
+# OS / editor
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# Qt Creator
+*.user
+*.user.*
+CMakeLists.txt.user*
+
+# Local test artifacts
+*.log
+/tmp/
+
+# Don't commit the empty fonts placeholder
+fonts/.gitkeep

@@ -1,0 +1,11 @@
+[SddmGreeterTheme]
+Name=Deviancy
+Description=A cinematic cyberpunk identity interface for SDDM
+Author=Maanya Jogani
+License=CC-BY-SA
+Type=sddm-theme
+Version=1.0
+Screenshot=preview.png
+MainScript=Main.qml
+Theme-Id=deviancy
+Theme-API=2.0
