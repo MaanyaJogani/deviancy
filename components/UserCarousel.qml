@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtGraphicalEffects 1.15
+import Qt5Compat.GraphicalEffects
 
 // Last-signed-in user centered and lit up, other accounts dimmed on either
 // side. Chevrons (or the side names themselves) request prev/next; Main.qml

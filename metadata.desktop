@@ -9,3 +9,4 @@ Screenshot=preview.png
 MainScript=Main.qml
 Theme-Id=deviancy
 Theme-API=2.0
+QtVersion=6

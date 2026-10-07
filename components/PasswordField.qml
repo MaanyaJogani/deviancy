@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import QtGraphicalEffects 1.15
+import Qt5Compat.GraphicalEffects
 
 // Password entry rendered as small glowing cyan cell blocks rather than an
 // ordinary text field, with a brightened, subtly-pulsing underline while

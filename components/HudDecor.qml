@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtGraphicalEffects 1.15
+import Qt5Compat.GraphicalEffects
 
 // Purely decorative HUD elements: the panel/photo seam, corner brackets,
 // dotted edge accents, and the small system-label taglines. None of this

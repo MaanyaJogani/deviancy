@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtGraphicalEffects 1.15
+import Qt5Compat.GraphicalEffects
 
 // Two faint scanlines that roam the screen independently at all times.
 // Set `converge: true` (with a `targetX`/`targetY`) to have them stop

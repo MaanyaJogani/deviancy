@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtGraphicalEffects 1.15
+import Qt5Compat.GraphicalEffects
 
 // Self-contained clock block: LOCAL TIME label, glowing LED-style clock with
 // its own periodic random flicker, and the weekday/date readout. Call
