@@ -24,7 +24,7 @@ game assets. All artwork is original.
 
 ## Preview
 
-![Deviancy idle screen](preview.png)
+![Deviancy idle screen](sddm/preview.png)
 
 ### Screenshots
 
@@ -48,6 +48,21 @@ Each state is available as both MP4 and animated GIF in `Previews/clips/`.
 | Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) |
 | Successful authentication | ![Success](Previews/clips/5-successful-auth.gif) |
 
+## Plasma splash screen (in development)
+
+A matching Plasma 6 splash screen lives in `splash/` — a Look-and-Feel
+package that continues the Deviancy aesthetic after login (cityscape,
+scanlines, and session-authorization messaging), so the transition from
+greeter to desktop feels like one continuous sequence.
+
+Once complete it will install to:
+
+```bash
+cp -r splash ~/.local/share/plasma/look-and-feel/deviancy-splash
+```
+
+and be selectable under System Settings → Appearance → Splash Screen.
+
 ## Requirements
 
 - SDDM >= 0.19 (Theme-API 2.0)
@@ -57,8 +72,12 @@ Each state is available as both MP4 and animated GIF in `Previews/clips/`.
 ## Install
 
 ```bash
-# Copy the theme into the system themes directory
-sudo cp -r deviancy /usr/share/sddm/themes/deviancy
+# Copy the SDDM theme into the system themes directory
+# (clone the repo first, then run this from inside the repo)
+sudo cp -r sddm /usr/share/sddm/themes/deviancy
+
+# To update an already-installed copy instead:
+sudo cp -rT sddm /usr/share/sddm/themes/deviancy
 
 # Activate it
 sudo tee /etc/sddm.conf.d/theme.conf << 'EOF'
@@ -79,46 +98,56 @@ Restart SDDM to apply (this logs you out):
 sudo systemctl restart sddm
 ```
 
+### Previewing without installing
+
+```bash
+sddm-greeter --test-mode --theme ./sddm
+```
+
 ## File layout
 
 ```
 deviancy/
-├── Main.qml              Entry point — state machine, user data, wiring
-├── metadata.desktop      SDDM theme metadata
 ├── README.md
 ├── LICENSE
-├── preview.png           Screenshot for KDE Store / Pling / SDDM preview
+├── social-preview.png    Social card image for link sharing
 │
-├── assets/
-│   └── background.png     Full-bleed cityscape
+├── sddm/                 SDDM login theme
+│   ├── Main.qml              Entry point — state machine, user data, wiring
+│   ├── metadata.desktop      SDDM theme metadata
+│   ├── preview.png           Screenshot for KDE Store / Pling / SDDM preview
+│   ├── assets/
+│   │   └── background.png    Full-bleed cityscape
+│   ├── components/
+│   │   ├── Background.qml       Cityscape + dark gradient panel
+│   │   ├── HudDecor.qml         Static HUD elements (brackets, dots, taglines)
+│   │   ├── ScanlineOverlay.qml  Horizontal + vertical scanlines, intersection dot
+│   │   ├── ClockPanel.qml       Self-contained clock with flicker()
+│   │   ├── UserCarousel.qml     Prev/current/next user display
+│   │   ├── PasswordField.qml    Cell-based password entry
+│   │   └── AuthenticateButton.qml  Collapsing/progress-fill button
+│   └── fonts/                (reserved for bundled fonts)
 │
-├── components/
-│   ├── Background.qml     Cityscape + dark gradient panel
-│   ├── HudDecor.qml       Static HUD elements (brackets, dots, taglines)
-│   ├── ScanlineOverlay.qml  Horizontal + vertical scanlines, intersection dot
-│   ├── ClockPanel.qml     Self-contained clock with flicker()
-│   ├── UserCarousel.qml   Prev/current/next user display
-│   ├── PasswordField.qml  Cell-based password entry
-│   └── AuthenticateButton.qml  Collapsing/progress-fill button
+├── splash/               Plasma 6 splash screen (work in progress)
+│   ├── metadata.desktop      Look-and-Feel package metadata
+│   └── contents/splash/      Splash.qml lives here (once designed)
 │
-├── Previews/
-│   ├── 01-idle.png
-│   ├── 02-typing.png
-│   ├── 03-auth-success.png
-│   ├── 04-auth-fail.png
-│   └── clips/             MP4 + GIF clips of each auth state
-│
-└── fonts/                (reserved for bundled fonts)
+└── Previews/
+    ├── 01-idle.png
+    ├── 02-typing.png
+    ├── 03-auth-success.png
+    ├── 04-auth-fail.png
+    └── clips/             MP4 + GIF clips of each auth state
 ```
 
 ## Customizing
 
-- **Background**: replace `assets/background.png`. Any resolution; the image
+- **Background**: replace `sddm/assets/background.png`. Any resolution; the image
   is cropped to fill the screen with `PreserveAspectCrop`.
 - **Accent color**: edit the `cyan` / `cyanSoft` properties near the top of
-  `Main.qml`. They propagate to all components via bindings.
-- **Taglines**: edit `HudDecor.qml` — `STILL HUMAN, STILL HERE` (bottom-left)
-  and `DEVIANCY IS FREEDOM` (bottom-right).
+  `sddm/Main.qml`. They propagate to all components via bindings.
+- **Taglines**: edit `sddm/components/HudDecor.qml` — `STILL HUMAN, STILL HERE`
+  (bottom-left) and `DEVIANCY IS FREEDOM` (bottom-right).
 
 ## License
 

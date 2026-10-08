@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=Deviancy — cinematic cyberpunk splash screen for Plasma
+
+Encoding=UTF-8
+Keywords=Desktop;Workspace;Appearance;Look and Feel;Logout;Lock;Suspend;Shutdown;Hibernate;
+Name=Deviancy Splash
+
+Type=Service
+
+X-KDE-ServiceTypes=Plasma/LookAndFeel
+X-KDE-ParentApp=
+X-KDE-PluginInfo-Author=Maanya Jogani
+X-KDE-PluginInfo-Category=
+X-KDE-PluginInfo-Email=maanyajogani@gmail.com
+X-KDE-PluginInfo-License=CC-BY-SA
+X-KDE-PluginInfo-Name=deviancy-splash
+X-KDE-PluginInfo-Version=0.1
+X-Plasma-MainScript=defaults

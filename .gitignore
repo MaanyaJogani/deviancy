@@ -13,6 +13,3 @@ CMakeLists.txt.user*
 # Local test artifacts
 *.log
 /tmp/
-
-# Don't commit the empty fonts placeholder
-fonts/.gitkeep
