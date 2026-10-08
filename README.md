@@ -48,20 +48,34 @@ Each state is available as both MP4 and animated GIF in `Previews/clips/`.
 | Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) |
 | Successful authentication | ![Success](Previews/clips/5-successful-auth.gif) |
 
-## Plasma splash screen (in development)
+## Plasma splash screen
 
-A matching Plasma 6 splash screen lives in `splash/` — a Look-and-Feel
-package that continues the Deviancy aesthetic after login (cityscape,
-scanlines, and session-authorization messaging), so the transition from
-greeter to desktop feels like one continuous sequence.
+A matching Plasma 6 splash screen lives in `splash/` — it continues the
+Deviancy aesthetic after login: **SIGNATURE ACCEPTED / RESTORING PRESENCE**,
+a stage-driven restoration checklist, a block-glyph progress bar, and a
+glowing **WELCOME HOME** finale. Because its animation is driven by the
+real session-loading stages (not a fixed timer), the finale always plays
+before the desktop appears — the greeter → splash → desktop handover feels
+like one continuous sequence.
 
-Once complete it will install to:
+Install:
 
 ```bash
 cp -r splash ~/.local/share/plasma/look-and-feel/deviancy-splash
 ```
 
-and be selectable under System Settings → Appearance → Splash Screen.
+Then select **Deviancy Splash** under System Settings → Appearance → Splash
+Screen, or set it directly:
+
+```bash
+kwriteconfig6 --file ksplashrc --group KSplash --key Theme deviancy-splash
+```
+
+Preview without installing:
+
+```bash
+ksplashqml --test --window ./splash
+```
 
 ## Requirements
 
@@ -128,9 +142,12 @@ deviancy/
 │   │   └── AuthenticateButton.qml  Collapsing/progress-fill button
 │   └── fonts/                (reserved for bundled fonts)
 │
-├── splash/               Plasma 6 splash screen (work in progress)
-│   ├── metadata.desktop      Look-and-Feel package metadata
-│   └── contents/splash/      Splash.qml lives here (once designed)
+├── splash/               Plasma 6 splash screen (Look-and-Feel package)
+│   ├── metadata.desktop      Package metadata (deviancy-splash)
+│   └── contents/splash/
+│       ├── Splash.qml        Stage-driven restoration sequence
+│       └── images/
+│           └── background.png  Same cityscape as the greeter
 │
 └── Previews/
     ├── 01-idle.png
