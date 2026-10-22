@@ -18,11 +18,14 @@ game assets. All artwork is original.
 
 ![Deviancy SDDM greeter](sddm/preview.png)
 
-The matching splash continues the visual theme after login. The gallery below
-shows the SDDM greeter.
+### See it in motion
+
+![Successful authentication animation](Previews/clips/5-successful-auth.gif)
+
+[Watch the authentication video](Previews/clips/5-successful-auth.mp4)
 
 <details>
-<summary>More screenshots and animated previews</summary>
+<summary><strong>See more screenshots and videos</strong> — click to expand the gallery</summary>
 
 ### Screenshots
 
@@ -34,17 +37,17 @@ shows the SDDM greeter.
 |:---:|:---:|
 | ![Success](Previews/03-auth-success.png) | ![Failure](Previews/04-auth-fail.png) |
 
-### Video clips
+### More animations
 
-Each state is available as both MP4 and animated GIF in `Previews/clips/`.
+| State | Animated preview | Video |
+|:---|:---:|:---:|
+| Idle (scanlines roaming) | ![Idle](Previews/clips/1-idle.gif) | [MP4](Previews/clips/1-idle.mp4) |
+| Typing (password cells) | ![Typing](Previews/clips/2-typing.gif) | [MP4](Previews/clips/2-typing.mp4) |
+| Access denied | ![Access denied](Previews/clips/3-access-denied.gif) | [MP4](Previews/clips/3-access-denied.mp4) |
+| Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) | [MP4](Previews/clips/4-switching-profiles.mp4) |
 
-| State | GIF |
-|:---|:---:|
-| Idle (scanlines roaming) | ![Idle](Previews/clips/1-idle.gif) |
-| Typing (password cells) | ![Typing](Previews/clips/2-typing.gif) |
-| Access denied | ![Access denied](Previews/clips/3-access-denied.gif) |
-| Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) |
-| Successful authentication | ![Success](Previews/clips/5-successful-auth.gif) |
+These previews show the SDDM greeter. The matching splash continues the visual
+theme after login.
 
 </details>
 
