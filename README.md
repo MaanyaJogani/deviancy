@@ -1,6 +1,6 @@
 # Deviancy
 
-A cinematic cyberpunk identity interface for SDDM.
+A cinematic cyberpunk SDDM login theme with a matching Plasma 6 splash screen.
 
 Deviancy is an original SDDM login theme inspired by the quiet, eerie interface
 aesthetic of android identity verification — restrained, mechanical, and alive
@@ -9,22 +9,20 @@ game assets. All artwork is original.
 
 ## Features
 
-- Full-bleed AI-generated cityscape background
-- Glowing LED-style clock with randomized tube-light flicker
-- Futuristic HUD: corner brackets, dotted accents, scanlines, status codes
-- Multi-user carousel with stacked first/last names and per-user model numbers
-- Custom cell-based password entry (no generic password bullets)
-- Identity-verification animation on authenticate
-  - Button collapses into a left-to-right progress line
-  - Scanlines converge on the selected user
-  - Status messages cycle rapidly
-  - Success/failure handled by real SDDM, never faked
-- Defensive virtual-keyboard suppression (no on-screen keyboard unless requested)
-- Componentized QML architecture
+- Glowing clock, roaming scanlines, and a cinematic cityscape background
+- Multi-user carousel and custom password cells
+- Animated authentication feedback connected to SDDM
+- Matching Plasma splash with a restoration checklist and WELCOME HOME greeting
 
 ## Preview
 
-![Deviancy idle screen](sddm/preview.png)
+![Deviancy SDDM greeter](sddm/preview.png)
+
+The matching splash continues the visual theme after login. The gallery below
+shows the SDDM greeter.
+
+<details>
+<summary>More screenshots and animated previews</summary>
 
 ### Screenshots
 
@@ -48,129 +46,37 @@ Each state is available as both MP4 and animated GIF in `Previews/clips/`.
 | Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) |
 | Successful authentication | ![Success](Previews/clips/5-successful-auth.gif) |
 
-## Plasma splash screen
-
-A matching Plasma 6 splash screen lives in `splash/` — it continues the
-Deviancy aesthetic after login: **SIGNATURE ACCEPTED / RESTORING PRESENCE**,
-a stage-driven restoration checklist, a block-glyph progress bar, and a
-glowing **WELCOME HOME** finale. Because its animation is driven by the
-real session-loading stages (not a fixed timer), the finale always plays
-before the desktop appears — the greeter → splash → desktop handover feels
-like one continuous sequence.
-
-Install:
-
-```bash
-cp -r splash ~/.local/share/plasma/look-and-feel/deviancy-splash
-```
-
-Then select **Deviancy Splash** under System Settings → Appearance → Splash
-Screen, or set it directly:
-
-```bash
-kwriteconfig6 --file ksplashrc --group KSplash --key Theme deviancy-splash
-```
-
-Preview without installing:
-
-```bash
-ksplashqml --test --window ./splash
-```
+</details>
 
 ## Requirements
 
-- SDDM >= 0.19 (Theme-API 2.0)
-- Qt 5.15 with: QtQuick, QtQuick.Controls, QtGraphicalEffects
-- KDE Plasma / Kubuntu recommended but not required
+| Component | Requirements |
+| --- | --- |
+| SDDM greeter | Qt 6 capable SDDM; QtQuick, QtQuick.Controls, Qt5Compat.GraphicalEffects; physical keyboard |
+| Plasma splash | Plasma 6; ksplashqml; QtQuick and Qt5Compat.GraphicalEffects |
 
-## Install
+The two themes install separately. Plasma is optional for the greeter.
+See the guides for compatibility notes and package requirements.
 
-```bash
-# Copy the SDDM theme into the system themes directory
-# (clone the repo first, then run this from inside the repo)
-sudo cp -r sddm /usr/share/sddm/themes/deviancy
-
-# To update an already-installed copy instead:
-sudo cp -rT sddm /usr/share/sddm/themes/deviancy
-
-# Activate it
-sudo tee /etc/sddm.conf.d/theme.conf << 'EOF'
-[Theme]
-Current=deviancy
-EOF
-
-# (Optional) disable the Qt virtual keyboard globally
-sudo tee /etc/sddm.conf.d/10-no-virtual-keyboard.conf << 'EOF'
-[General]
-InputMethod=
-EOF
-```
-
-Restart SDDM to apply (this logs you out):
+## Get started
 
 ```bash
-sudo systemctl restart sddm
+git clone https://github.com/MaanyaJogani/deviancy.git
+cd deviancy
 ```
 
-### Previewing without installing
+Choose the component you want to install:
 
-```bash
-sddm-greeter --test-mode --theme ./sddm
-```
+- [SDDM greeter guide](docs/sddm.md) — installation, activation, previewing,
+  authentication behavior, and troubleshooting
+- [Plasma splash guide](docs/splash.md) — installation, activation, previewing,
+  and session-stage behavior
+- [Customization guide](docs/customization.md) — backgrounds, colors, text,
+  and source layout
 
-## File layout
-
-```
-deviancy/
-├── README.md
-├── LICENSE
-├── social-preview.png    Social card image for link sharing
-│
-├── sddm/                 SDDM login theme
-│   ├── Main.qml              Entry point — state machine, user data, wiring
-│   ├── metadata.desktop      SDDM theme metadata
-│   ├── preview.png           Screenshot for KDE Store / Pling / SDDM preview
-│   ├── assets/
-│   │   └── background.png    Full-bleed cityscape
-│   ├── components/
-│   │   ├── Background.qml       Cityscape + dark gradient panel
-│   │   ├── HudDecor.qml         Static HUD elements (brackets, dots, taglines)
-│   │   ├── ScanlineOverlay.qml  Horizontal + vertical scanlines, intersection dot
-│   │   ├── ClockPanel.qml       Self-contained clock with flicker()
-│   │   ├── UserCarousel.qml     Prev/current/next user display
-│   │   ├── PasswordField.qml    Cell-based password entry
-│   │   └── AuthenticateButton.qml  Collapsing/progress-fill button
-│   └── fonts/                (reserved for bundled fonts)
-│
-├── splash/               Plasma 6 splash screen (Look-and-Feel package)
-│   ├── metadata.desktop      Package metadata (deviancy-splash)
-│   └── contents/splash/
-│       ├── Splash.qml        Stage-driven restoration sequence
-│       └── images/
-│           └── background.png  Same cityscape as the greeter
-│
-└── Previews/
-    ├── 01-idle.png
-    ├── 02-typing.png
-    ├── 03-auth-success.png
-    ├── 04-auth-fail.png
-    └── clips/             MP4 + GIF clips of each auth state
-```
-
-## Customizing
-
-- **Background**: replace `sddm/assets/background.png`. Any resolution; the image
-  is cropped to fill the screen with `PreserveAspectCrop`.
-- **Accent color**: edit the `cyan` / `cyanSoft` properties near the top of
-  `sddm/Main.qml`. They propagate to all components via bindings.
-- **Taglines**: edit `sddm/components/HudDecor.qml` — `STILL HUMAN, STILL HERE`
-  (bottom-left) and `DEVIANCY IS FREEDOM` (bottom-right).
-
-## License
+## License and author
 
 CC-BY-SA 4.0 — see [LICENSE](LICENSE).
 Background artwork © Maanya Jogani, CC-BY-SA 4.0.
 
-## Author
-
-Maanya Jogani
+Created by Maanya Jogani.
