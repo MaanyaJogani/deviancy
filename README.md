@@ -22,8 +22,6 @@ game assets. All artwork is original.
 
 ![Successful authentication animation](Previews/clips/5-successful-auth.gif)
 
-[Watch the authentication video](Previews/clips/5-successful-auth.mp4)
-
 <details>
 <summary><strong>See more screenshots and videos</strong> — click to expand the gallery</summary>
 
