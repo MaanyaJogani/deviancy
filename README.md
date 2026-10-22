@@ -37,12 +37,12 @@ game assets. All artwork is original.
 
 ### More animations
 
-| State | Animated preview | Video |
-|:---|:---:|:---:|
-| Idle (scanlines roaming) | ![Idle](Previews/clips/1-idle.gif) | [MP4](Previews/clips/1-idle.mp4) |
-| Typing (password cells) | ![Typing](Previews/clips/2-typing.gif) | [MP4](Previews/clips/2-typing.mp4) |
-| Access denied | ![Access denied](Previews/clips/3-access-denied.gif) | [MP4](Previews/clips/3-access-denied.mp4) |
-| Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) | [MP4](Previews/clips/4-switching-profiles.mp4) |
+| State | Animated preview |
+|:---|:---:|
+| Idle (scanlines roaming) | ![Idle](Previews/clips/1-idle.gif) |
+| Typing (password cells) | ![Typing](Previews/clips/2-typing.gif) |
+| Access denied | ![Access denied](Previews/clips/3-access-denied.gif) |
+| Switching profiles | ![Switching](Previews/clips/4-switching-profiles.gif) |
 
 These previews show the SDDM greeter. The matching splash continues the visual
 theme after login.
